@@ -22,59 +22,60 @@ const Banner = () => {
   const nextSlide = () => setCurrent((current + 1) % videos.length);
 
   return (
-    <div className="w-full flex justify-center mt-5">
-      <div className="relative w-full max-w-7xl overflow-hidden rounded-2xl shadow-2xl bg-black">
-        {/* Slide Container */}
-        <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{
-            transform: `translateX(-${current * 100}%)`,
-            width: `${videos.length * 100}%`,
-          }}
-        >
-          {videos.map((src, i) => (
-            <div key={i} className="w-full flex-shrink-0 relative">
-              <video
-                src={src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-[60vh] object-cover brightness-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+    <>
+      <div className="absolute w-full flex top-0 left-0 justify-center ">
+        <div className=" md:w-10/12 mx-auto">
+          <div className=" relative w-full overflow-hidden bg-black rounded-xl md:rounded-3xl shadow-xl">
+            <div
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${current * 100}%)` }}
+            >
+              {videos.map((src, i) => (
+                <div key={i} className="w-full shrink-0 relative">
+                  <video
+                    src={src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-[70vh] object-cover brightness-90"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Navigation Buttons */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-
-        {/* Dots indicator */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {videos.map((_, i) => (
+            {/* Navigation Buttons */}
             <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-2 w-2 rounded-full transition-all ${
-                current === i ? "bg-white w-4" : "bg-white/50"
-              }`}
-            />
-          ))}
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Dots indicator */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {videos.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`h-2 w-2 rounded-full transition-all ${
+                    current === i ? "bg-white w-4" : "bg-white/50"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="mb-[700px]"></div>
+    </>
   );
 };
 

@@ -28,8 +28,9 @@ const Navbar = () => {
 
   const handleTheme = () => {};
   return (
-    <div className="shadow-sm  glass-card">
-      <div className="navbar py-0 min-h-0 z-1  w-11/12 mx-auto">
+   
+    <div className=" flex justify-center">
+      <div className="absolute   navbar  min-h-0 z-1 shadow-sm  glass-card  md:w-10/12 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -51,7 +52,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1  w-56 p-2 shadow"
+              className="menu menu-sm dropdown-content mt-3 bg-base-100 rounded-box z-1  w-56 p-2 shadow"
             >
               <Link
                 to={"/"}
@@ -191,6 +192,7 @@ const Navbar = () => {
         {/* this is Navbar
       <Link to='/login'>Login</Link> */}
       </div>
+      
     </div>
   );
 };
