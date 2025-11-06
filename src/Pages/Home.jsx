@@ -4,9 +4,10 @@ import Banner from "../Components/Banner";
 const Home = () => {
   return (
     <div>
-      <section>
+      {/* <section>
         <Banner></Banner>
-      </section>
+      </section> */}
+      qwidhjqw9hu9h
     </div>
   );
 };

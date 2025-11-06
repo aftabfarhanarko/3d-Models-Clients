@@ -17,7 +17,8 @@ const Banner = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const prevSlide = () => setCurrent((current - 1 + videos.length) % videos.length);
+  const prevSlide = () =>
+    setCurrent((current - 1 + videos.length) % videos.length);
   const nextSlide = () => setCurrent((current + 1) % videos.length);
 
   return (
