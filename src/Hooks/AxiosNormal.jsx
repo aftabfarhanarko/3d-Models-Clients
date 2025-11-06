@@ -1,3 +1,13 @@
+import axios from "axios";
 
 
-// const instent = 
+
+const instence = axios.create({
+    baseURL:'http://localhost:3000'
+})
+
+const useAxiosNormle = () => {
+    return instence;
+}
+
+export default useAxiosNormle;
