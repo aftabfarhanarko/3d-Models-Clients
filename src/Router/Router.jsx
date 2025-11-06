@@ -7,6 +7,7 @@ import AddModal from "../Pages/AddModal/AddModal";
 import AllModal from "../Pages/AllModal/AllModal";
 import Download from "../Pages/Download/Download";
 import MyModels from "../Pages/MyModels/MyModels";
+import Detlics from "../Pages/Detlics/Detlics";
 
 export const Router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ export const Router = createBrowserRouter([
         path: "/my-models",
         element: <MyModels></MyModels>,
       },
+      {
+        path:"/detlise/:id",
+         loader: ({params}) => fetch(`http://localhost:3000/model/${params.id}`),
+        element:<Detlics></Detlics>
+      }
     ],
   },
 ]);

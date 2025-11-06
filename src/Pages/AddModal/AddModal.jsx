@@ -19,9 +19,8 @@ const AddModal = () => {
       created_by: user.email,
     };
 
-    axios.post("/model", formData)
-    .then((data) => {
-      console.log("This is From Data axios", data.data);
+    axios.post("/model", formData).then((data) => {
+      // console.log("This is From Data axios", data.data);
     });
   };
   return (

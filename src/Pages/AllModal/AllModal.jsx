@@ -8,11 +8,11 @@ const AllModal = () => {
   const axio = useAxiosNormle();
   useEffect(() => {
     axio.get("/model").then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       setCards(data.data);
     });
   }, [axio]);
-  console.log(cards);
+  // console.log(cards);
 
   return (
     <div className="mt-25">
