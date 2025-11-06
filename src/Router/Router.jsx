@@ -5,6 +5,8 @@ import Rigester from "../Pages/Rigester/Rigester";
 import Home from "../Pages/Home/Home";
 import AddModal from "../Pages/AddModal/AddModal";
 import AllModal from "../Pages/AllModal/AllModal";
+import Download from "../Pages/Download/Download";
+import MyModels from "../Pages/MyModels/MyModels";
 
 export const Router = createBrowserRouter([
   {
@@ -13,7 +15,7 @@ export const Router = createBrowserRouter([
     children: [
       {
         index: true,
-       Component: Home
+        Component: Home,
       },
       {
         path: "/login",
@@ -24,13 +26,21 @@ export const Router = createBrowserRouter([
         element: <Rigester></Rigester>,
       },
       {
-        path:"/addmodal",
-        element:<AddModal></AddModal>
+        path: "/addmodal",
+        element: <AddModal></AddModal>,
       },
       {
-        path:"/all-modal",
-        element:<AllModal></AllModal>
-      }
+        path: "/all-modal",
+        element: <AllModal></AllModal>,
+      },
+      {
+        path: "download",
+        element: <Download></Download>,
+      },
+      {
+        path: "/my-models",
+        element: <MyModels></MyModels>,
+      },
     ],
   },
 ]);

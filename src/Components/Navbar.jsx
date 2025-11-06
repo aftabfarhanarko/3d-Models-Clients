@@ -8,6 +8,7 @@ import { LuRotate3D } from "react-icons/lu";
 import { TiHomeOutline } from "react-icons/ti";
 import { Link, NavLink } from "react-router";
 import useAuth from "../Hooks/UserAUth";
+import { FcDownload } from "react-icons/fc";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
@@ -76,11 +77,14 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-         <div className="hidden  md:block">
-           <Link to={"/"} className="flex items-center gap-1 text-xl font-bold">
-            <LuRotate3D /> 3D Models Hub
-          </Link>
-         </div>
+          <div className="hidden  md:block">
+            <Link
+              to={"/"}
+              className="flex items-center gap-1 text-xl font-bold"
+            >
+              <LuRotate3D /> 3D Models Hub
+            </Link>
+          </div>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1 gap-10">
@@ -136,11 +140,18 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                  <Link to={"/my-models"}>My Models</Link>
+                  <Link to={"/my-models"}>
+                    {" "}
+                    <IoLogoModelS /> My Models
+                  </Link>
                 </li>
 
                 <li>
-                  <Link to={"/my-downloads"}>My Downloads</Link>
+                  <Link to={"/download"}>
+                    {" "}
+                    <FcDownload />
+                    My Downloads
+                  </Link>
                 </li>
 
                 <input
