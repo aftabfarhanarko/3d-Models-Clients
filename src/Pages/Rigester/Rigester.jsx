@@ -1,15 +1,34 @@
-import React from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router";
+import useAuth from "../../Hooks/UserAUth";
 
 const Rigester = () => {
-    const handleRegister = (e) => {
+  const { creatUser, updeatProfile,googleLogin, user } = useAuth();
+  console.log(user);
+  
 
-    }
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const displayName = event.target.displayName.value;
+    const photoURL = event.target.photoURL.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
 
-    const handleGoogleSignIn = () => {
+    const updet = { displayName, photoURL };
+    creatUser(email, password)
+      .then((result) => {
+        updeatProfile(updet).then(() => {
+          console.log("This is Creat User", result.user);
+        });
+      })
+      .catch((err) => {
+        console.log("User Error", err);
+      });
+  };
 
-    }
+  const handleGoogleSignIn = () => {
+    googleLogin();
+  };
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
@@ -67,10 +86,7 @@ const Rigester = () => {
           </button>
           <p className="text-center">
             Already have an account? Please{" "}
-            <Link
-              className="text-blue-500 hover:text-blue-800"
-              to="/login"
-            >
+            <Link className="text-blue-500 hover:text-blue-800" to="/login">
               Login
             </Link>{" "}
           </p>

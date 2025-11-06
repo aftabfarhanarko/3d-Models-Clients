@@ -7,12 +7,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: "AIzaSyAPyfbJmOsQ9LgYhUei46408ecuvTtXngA",
+  authDomain: "mail-password-auth-aa3db.firebaseapp.com",
+  projectId: "mail-password-auth-aa3db",
+  storageBucket: "mail-password-auth-aa3db.firebasestorage.app",
+  messagingSenderId: "628920661849",
+  appId: "1:628920661849:web:a2196a59b8f6f0b1babe48"
 };
 
 // Initialize Firebase

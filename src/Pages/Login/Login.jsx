@@ -1,16 +1,28 @@
 import React from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router";
+import useAuth from "../../Hooks/UserAUth";
 
 const Login = () => {
+  const { loginUserNow,googleLogin } = useAuth();
 
-    const handleLogIn = (e) =>{
+  const handleLogIn = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    console.log({ email, password });
+    loginUserNow(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    }
-
-    const handleGoogleSignIn = () => {
-
-    }
+  const handleGoogleSignIn = () => {
+    googleLogin()
+  };
   return (
     <div>
       <div className="card bg-base-100  w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-gray-200">
@@ -51,10 +63,7 @@ const Login = () => {
           </button>
           <p className="text-center">
             New to our website? Please{" "}
-            <Link
-              className="text-blue-500 hover:text-blue-800"
-              to="/register"
-            >
+            <Link className="text-blue-500 hover:text-blue-800" to="/register">
               Register
             </Link>
           </p>

@@ -3,13 +3,14 @@ import { FaGear } from "react-icons/fa6";
 import { GoHomeFill } from "react-icons/go";
 import { ImBoxAdd } from "react-icons/im";
 import { IoLogoModelS } from "react-icons/io";
-import { IoLogIn } from "react-icons/io5";
+import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { LuRotate3D } from "react-icons/lu";
 import { TiHomeOutline } from "react-icons/ti";
 import { Link, NavLink } from "react-router";
+import useAuth from "../Hooks/UserAUth";
 
 const Navbar = () => {
-  const user = true
+  const { user, logoutUser } = useAuth();
   // const link = (
   //   <div className="flex gap-4 text-lg font-semibold">
   //     <NavLink className="items-center gap-1 flex" to="/">
@@ -23,13 +24,11 @@ const Navbar = () => {
   //     </NavLink>
   //   </div>
   // );
- 
-  const handleTheme = () => {
 
-  }
+  const handleTheme = () => {};
   return (
     <div className="navbar py-0 min-h-0 z-1 shadow-sm rounded-full glass-card w-10/12 mx-auto">
-      {/* <div className="navbar-start">
+      <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
             <svg
@@ -87,11 +86,10 @@ const Navbar = () => {
               <ImBoxAdd /> Add model
             </NavLink>
           </li>
-          
         </ul>
       </div>
       <div className="navbar-end gap-3">
-        { (
+        {user ? (
           <div className="dropdown dropdown-end z-50">
             <div
               tabIndex={0}
@@ -146,7 +144,7 @@ const Navbar = () => {
               </li>
               <li>
                 <button
-                  onClick={""}
+                  onClick={logoutUser}
                   className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
                 >
                   <IoLogOut /> Logout
@@ -154,7 +152,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        )  (
+        ) : (
           <Link
             to={"/auth/login"}
             className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
@@ -163,10 +161,10 @@ const Navbar = () => {
             <IoLogIn /> Login
           </Link>
         )}
-      </div> */}
+      </div>
 
-      this is Navbar
-      <Link to='/login'>Login</Link>
+      {/* this is Navbar
+      <Link to='/login'>Login</Link> */}
     </div>
   );
 };
