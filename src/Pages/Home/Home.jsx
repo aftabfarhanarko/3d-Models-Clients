@@ -1,4 +1,3 @@
-import React from "react";
 import LetesModel from "../Letas-Model/LetesModel";
 import Banner from "../../Components/Banner";
 

@@ -4,8 +4,6 @@ import useAxiosNormle from "../../Hooks/AxiosNormal";
 
 const AddModal = () => {
   const { user } = useAuth();
-
-  console.log(user);
   const axios = useAxiosNormle();
 
   const handleSubmit = (e) => {
@@ -21,7 +19,8 @@ const AddModal = () => {
       created_by: user.email,
     };
 
-    axios.post("/model", formData).then((data) => {
+    axios.post("/model", formData)
+    .then((data) => {
       console.log("This is From Data axios", data.data);
     });
   };

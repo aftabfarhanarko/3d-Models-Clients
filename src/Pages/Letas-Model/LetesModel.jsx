@@ -7,12 +7,12 @@ const LetesModel = () => {
   const [modelsa, setModel] = useState([]);
 
   useEffect(() => {
-    axio.get("/model").then((data) => {
-      console.log("This is Data", data.data);
+    axio.get("/limet").then((data) => {
+      // console.log("This is Data", data.data);
       setModel(data.data);
     });
   }, [axio]);
-  console.log(modelsa);
+  // console.log(modelsa);
 
   return (
     <div>
@@ -20,7 +20,7 @@ const LetesModel = () => {
       <div className="grid grid-cols-2  md:grid-cols-4 gap-7 px-2">
         <Suspense fallback={<h1>Loding.......</h1>}>
           {modelsa.map((model) => (
-            <Card model={model}></Card>
+            <Card model={model} key={model._id}></Card>
           ))}
         </Suspense>
       </div>
