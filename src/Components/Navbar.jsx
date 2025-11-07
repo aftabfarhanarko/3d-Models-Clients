@@ -28,7 +28,6 @@ const Navbar = () => {
 
   const handleTheme = () => {};
   return (
-   
     <div className=" flex justify-center">
       <div className="absolute   navbar  min-h-0 z-1 shadow-sm  glass-card  md:w-10/12 ">
         <div className="navbar-start">
@@ -159,19 +158,13 @@ const Navbar = () => {
                   onChange={(e) => handleTheme(e.target.checked)}
                   type="checkbox"
                   defaultChecked={localStorage.getItem("theme") === "dark"}
-                  className="toggle"
+                  className="toggle ml-2 mt-2"
                 />
 
                 <li>
-                  <a>
-                    {" "}
-                    <FaGear /> Settings
-                  </a>
-                </li>
-                <li>
                   <button
                     onClick={logoutUser}
-                    className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
+                    className="btn btn-xs mt-2 text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
                   >
                     <IoLogOut /> Logout
                   </button>
@@ -192,7 +185,6 @@ const Navbar = () => {
         {/* this is Navbar
       <Link to='/login'>Login</Link> */}
       </div>
-      
     </div>
   );
 };

@@ -27,7 +27,11 @@ const Rigester = () => {
   };
 
   const handleGoogleSignIn = () => {
-    googleLogin();
+    googleLogin()
+    .then(result => {
+      console.log(result.user);
+      
+    })
   };
   return (
     <div className="min-h-screen flex items-center justify-center">

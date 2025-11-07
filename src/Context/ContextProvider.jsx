@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthCntext } from './AuthContex';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateCurrentUser, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 
 
@@ -29,6 +29,8 @@ const ContextProvider = ({children}) => {
         return signOut(auth);
     } 
 
+   
+  
     useEffect(()=> {
         const unsubcript = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);

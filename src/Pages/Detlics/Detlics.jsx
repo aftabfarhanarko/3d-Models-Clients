@@ -1,84 +1,52 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
-import { useLoaderData } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAxiosNormle from "../../Hooks/AxiosNormal";
 import useAuth from "../../Hooks/UserAUth";
 
 const Detlics = () => {
-  const data = useLoaderData();
+  const [data, setData] = useState([]);
   const refernce = useRef();
   const { user } = useAuth();
   const axo = useAxiosNormle();
+  const { id } = useParams();
+  const [refarncs, setRefarncs] = useState(false);
+  const naviget = useNavigate();
+
+  useEffect(() => {
+    axo.get(`/model/${id}`).then((result) => {
+      console.log(result.data);
+      setData(result.data);
+    });
+  }, [axo, id, refarncs]);
+
 
   const handleDownload = () => {
-    // add your download logic
     const finalModel = {
       name: data.name,
       downloads: data.downloads,
       created_by: data.created_by,
       description: data.description,
-      image: data.thumbnail,
+      image: data.image,
+      category: data.category,
       created_at: new Date(),
       stutas: data.stutas,
       downloaded_by: user.email,
     };
 
-    axo.post(`/downlods/${data._id}`, finalModel)
-    .then((data) => {
+    axo.post(`/downlods/${data._id}`, finalModel).then((data) => {
+      setRefarncs(!refarncs);
       console.log("Data Downlodes and Updeat", data.data);
-      const power = data.data;
-      //   setData(power);
     });
   };
 
-  const handleDownloadg = () => {
-    const finalModel = {
-      name: model.name,
-      downloads: model.downloads,
-      created_by: model.created_by,
-      description: model.description,
-      thumbnail: model.thumbnail,
-      created_at: new Date(),
-      downloaded_by: user.email,
-    };
-
-    fetch(`https://3d-model-server.vercel.app/downloads/${model._id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(finalModel),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        toast.success("Successfully downloaded!");
-        setRefecth(!refetch);
-
-        // alternative solution of realtime download count update
-
-        //     fetch(`https://3d-model-server.vercel.app/models/${id}`, {
-        //   headers: {
-        //     authorization: `Bearer ${user.accessToken}`,
-        //   },
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     setModel(data.result);
-        //     console.log(" Api called!")
-        //     console.log(data);
-        //     setLoading(false);
-        //   });
-      })
-
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const handleDelete = () => {
-    // confirm + delete logic
+    axo.delete(`/model/${id}`)
+    .then(result => {
+      console.log(result.data);
+      naviget("/")
+    })
   };
 
   const handleEdit = () => {
@@ -249,3 +217,4 @@ const Detlics = () => {
 };
 
 export default Detlics;
+

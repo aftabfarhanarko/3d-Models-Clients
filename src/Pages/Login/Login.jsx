@@ -10,7 +10,6 @@ const Login = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    // console.log({ email, password });
     loginUserNow(email, password)
       .then((result) => {
         console.log(result);
@@ -22,6 +21,9 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleLogin()
+    .then(result => {
+      console.log(result.user);  
+    })
   };
   return (
     <div className=" min-h-screen flex justify-center items-center ">

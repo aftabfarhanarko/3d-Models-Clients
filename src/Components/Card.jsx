@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const Card = ({model}) => {
+const Card = ({ model }) => {
   const { name, image, category, description, _id, created_by } = model;
 
   return (

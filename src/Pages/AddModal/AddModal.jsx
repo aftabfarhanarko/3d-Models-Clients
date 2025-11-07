@@ -20,9 +20,12 @@ const AddModal = () => {
     };
 
     axios.post("/model", formData).then((data) => {
-      // console.log("This is From Data axios", data.data);
+      console.log("This is From Data axios", data.data);
     });
   };
+
+  console.log(user.email);
+  
   return (
     <div className="min-h-screen flex items-center justify-center px-3">
       <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">

@@ -16,8 +16,11 @@ const MyModels = () => {
     });
   }, [axiosApi, user]);
 
+  console.log(modal);
+  
   return (
     <div className="mt-25">
+      <h1 className="text-2xl md:text-3xl font-semibold text-center mb-7">My Models Creat ({modal.length})</h1>
       <div className="grid grid-cols-2  md:grid-cols-4 gap-7 px-2">
         <Suspense fallback={<FadeLoader color="#13f759" />}>
           {modal.map((model) => (

@@ -44,7 +44,6 @@ export const Router = createBrowserRouter([
       },
       {
         path:"/detlise/:id",
-         loader: ({params}) => fetch(`http://localhost:3000/model/${params.id}`),
         element:<Detlics></Detlics>
       }
     ],
