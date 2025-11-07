@@ -1,11 +1,14 @@
 import React from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../Hooks/UserAUth";
 
 const Login = () => {
   const { loginUserNow,googleLogin } = useAuth();
-
+  const naviget = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  
   const handleLogIn = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -13,6 +16,7 @@ const Login = () => {
     loginUserNow(email, password)
       .then((result) => {
         console.log(result);
+         naviget(location.state ? location.state : "/")
       })
       .catch((err) => {
         console.log(err);
@@ -22,7 +26,8 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleLogin()
     .then(result => {
-      console.log(result.user);  
+      console.log(result.user); 
+       naviget(location.state ? location.state : "/") 
     })
   };
   return (

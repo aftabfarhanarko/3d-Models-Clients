@@ -8,6 +8,7 @@ import AllModal from "../Pages/AllModal/AllModal";
 import Download from "../Pages/Download/Download";
 import MyModels from "../Pages/MyModels/MyModels";
 import Detlics from "../Pages/Detlics/Detlics";
+import PrivetRouter from "./PrivetRouter";
 
 export const Router = createBrowserRouter([
   {
@@ -28,23 +29,23 @@ export const Router = createBrowserRouter([
       },
       {
         path: "/addmodal",
-        element: <AddModal></AddModal>,
+        element: <PrivetRouter><AddModal></AddModal></PrivetRouter>,
       },
       {
         path: "/all-modal",
-        element: <AllModal></AllModal>,
+        element:<PrivetRouter> <AllModal></AllModal></PrivetRouter>,
       },
       {
         path: "download",
-        element: <Download></Download>,
+        element: <PrivetRouter><Download></Download></PrivetRouter>,
       },
       {
         path: "/my-models",
-        element: <MyModels></MyModels>,
+        element: <PrivetRouter><MyModels></MyModels></PrivetRouter>,
       },
       {
         path:"/detlise/:id",
-        element:<Detlics></Detlics>
+        element:<PrivetRouter><Detlics></Detlics></PrivetRouter>
       }
     ],
   },
