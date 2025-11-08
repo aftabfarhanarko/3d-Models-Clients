@@ -22,15 +22,12 @@ const AllModal = () => {
   const handelSearch = (e) => {
     e.preventDefault();
     const searchText = e.target.text.value;
-    console.log('Search clicked now',{searchText});
-    axio.get("/search")
-    .then(result => {
+
+    axio.get(`/data?search=${searchText}`).then((result) => {
       console.log(result.data);
-      
-    })
-  }
-
-
+      setCards(result.data)
+    });
+  };
 
   if (loder) {
     return <Loder></Loder>;
@@ -41,9 +38,12 @@ const AllModal = () => {
         <h1 className="text-2xl text-center my-10 font-semibold">
           All 3D Models{" "}
         </h1>
-        <form onSubmit={handelSearch} className="relative -mt-5 md:mt-0 max-w-sm">
+        <form
+          onSubmit={handelSearch}
+          className="relative -mt-5 md:mt-0 max-w-sm"
+        >
           <input
-          name="text"
+            name="text"
             type="text"
             placeholder="Search..."
             className="w-full py-3 pl-12 pr-16 rounded-xl border border-gray-300 
@@ -70,7 +70,8 @@ const AllModal = () => {
           </svg>
 
           {/* Right Button */}
-          <button type="submit"
+          <button
+            type="submit"
             className="absolute py-3 top-1/2 right-0 -translate-y-1/2 px-4  
                bg-blue-600 text-white rounded-lg text-sm 
                hover:bg-blue-700 active:scale-95 transition"
