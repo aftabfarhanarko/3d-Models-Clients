@@ -2,20 +2,27 @@ import { Suspense, useEffect, useState } from "react";
 import useAxiosNormle from "../../Hooks/AxiosNormal";
 import useAuth from "../../Hooks/UserAUth";
 import { FadeLoader } from "react-spinners";
+import useAxiosSeciet from "../../Hooks/AxiosSecrite";
+import Loder from "../../Components/Loder";
 
 const Download = () => {
   const { user } = useAuth();
   const axiosApi = useAxiosNormle();
   const [modal, setModal] = useState([]);
   const [test, setTest] = useState(false);
+  const newAxios = useAxiosSeciet()
+  const [loder, setLoder] = useState(false);
 
   useEffect(() => {
-    axiosApi.get(`/userMe?email=${user.email}`).then((data) => {
+    setLoder(true);
+    newAxios.get(`/userMe?email=${user.email}`).then((data) => {
       const newData = data.data;
       setModal(newData);
+      setLoder(false)
     });
-  }, [axiosApi, user, test]);
-
+  }, [newAxios, user, test]);
+  
+  // 
   const deleteNow = (id) => {
     axiosApi.delete(`/downlods/${id}`).then((result) => {
       const data = result.data;
@@ -24,6 +31,9 @@ const Download = () => {
     });
   };
 
+  if(loder){
+    return <Loder></Loder>
+  }
   // downlods
   return (
     <div className="mt-25">

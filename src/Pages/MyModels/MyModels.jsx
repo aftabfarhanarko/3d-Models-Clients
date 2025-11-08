@@ -1,23 +1,32 @@
 import React, { Suspense, useEffect, useState } from "react";
 import useAuth from "../../Hooks/UserAUth";
-import useAxiosNormle from "../../Hooks/AxiosNormal";
 import { FadeLoader } from "react-spinners";
 import Card from "../../Components/Card";
+import useAxiosSeciet from "../../Hooks/AxiosSecrite";
+import Loder from "../../Components/Loder";
 
 const MyModels = () => {
   const { user } = useAuth();
-  const axiosApi = useAxiosNormle();
   const [modal, setModal] = useState([]);
+  const newAxiosApis = useAxiosSeciet();
+    const [loder, setLoder] = useState(false);
+
 
   useEffect(() => {
-    axiosApi.get(`/alldatafiter?email=${user.email}`).then((data) => {
+    setLoder(true);
+    newAxiosApis.get(`/alldatafiter?email=${user.email}`).then((data) => {
       const newData = data.data;
       setModal(newData);
+      console.log(data);
+      setLoder(false)
+      
     });
-  }, [axiosApi, user]);
+  }, [newAxiosApis, user]);
 
-  console.log(modal);
-  
+   if(loder){
+    return <Loder></Loder>
+  }
+
   return (
     <div className="mt-25">
       <h1 className="text-2xl md:text-3xl font-semibold text-center mb-7">My Models Creat ({modal.length})</h1>

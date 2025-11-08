@@ -1,19 +1,28 @@
 import React, { Suspense, useEffect, useState } from "react";
 import useAxiosNormle from "../../Hooks/AxiosNormal";
 import Card from "../../Components/Card";
+import Loder from "../../Components/Loder";
 
 const LetesModel = () => {
   const axio = useAxiosNormle();
   const [modelsa, setModel] = useState([]);
+  const [loder, setLoder] = useState(false);
+
 
   useEffect(() => {
+     setLoder(true);
     axio.get("/limet").then((data) => {
-      // console.log("This is Data", data.data);
+      console.log("This is Data", data.data);
       setModel(data.data);
+       setLoder(false);
     });
   }, [axio]);
-  // console.log(modelsa);
+  console.log(modelsa);
 
+
+    if(loder){
+    return <Loder></Loder>
+  }
   return (
     <div>
         <h1 className="text-2xl text-center my-10 font-semibold">Featured 3D Models  6 Latest Uploaded</h1>

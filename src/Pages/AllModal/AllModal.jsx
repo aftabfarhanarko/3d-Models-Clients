@@ -2,18 +2,27 @@ import React, { Suspense, useEffect, useState } from "react";
 import useAxiosNormle from "../../Hooks/AxiosNormal";
 import Card from "../../Components/Card";
 import { FadeLoader } from "react-spinners";
+import Loder from "../../Components/Loder";
 
 const AllModal = () => {
   const [cards, setCards] = useState([]);
   const axio = useAxiosNormle();
+  const [loder, setLoder] = useState(false);
+
   useEffect(() => {
+    setLoder(true);
+
     axio.get("/model").then((data) => {
-      // console.log(data.data);
+      console.log(data.data);
       setCards(data.data);
+    setLoder(false);
+
     });
   }, [axio]);
-  // console.log(cards);
-
+ 
+    if(loder){
+    return <Loder></Loder>
+  }
   return (
     <div className="mt-25">
       <h1 className="text-2xl text-center my-10 font-semibold">
