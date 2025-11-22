@@ -7,7 +7,7 @@ const Login = () => {
   const { loginUserNow,googleLogin } = useAuth();
   const naviget = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -15,18 +15,18 @@ const Login = () => {
     const password = event.target.password.value;
     loginUserNow(email, password)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
          naviget(location.state ? location.state : "/")
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
   const handleGoogleSignIn = () => {
     googleLogin()
     .then(result => {
-      console.log(result.user); 
+      // console.log(result.user); 
        naviget(location.state ? location.state : "/") 
     })
   };

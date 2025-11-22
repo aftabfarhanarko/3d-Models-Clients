@@ -17,7 +17,7 @@ const MyModels = () => {
     newAxiosApis.get(`/alldatafiter?email=${user.email}`).then((data) => {
       const newData = data.data;
       setModal(newData);
-      console.log(data);
+      // console.log(data);
       setLoder(false)
       
     });

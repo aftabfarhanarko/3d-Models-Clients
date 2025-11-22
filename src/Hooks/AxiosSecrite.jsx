@@ -3,13 +3,13 @@ import useAuth from "./UserAUth";
 // import { useNavigate } from "react-router";
 
 const instence = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://3d-modal-server.vercel.app",
 });
 
 const useAxiosSeciet = () => {
   const { user } = useAuth();
   // const naaaviget = useNavigate();, logoutUser
-  console.log(user.accessToken);
+  // console.log(user.accessToken);
 
   instence.interceptors.request.use((configs) => {
   if (user?.accessToken) {

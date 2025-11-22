@@ -3,9 +3,7 @@ import { Link } from "react-router";
 import useAuth from "../../Hooks/UserAUth";
 
 const Rigester = () => {
-  const { creatUser, updeatProfile,googleLogin, user } = useAuth();
-  console.log(user);
-  
+  const { creatUser, updeatProfile, googleLogin } = useAuth();
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -17,21 +15,13 @@ const Rigester = () => {
     const updet = { displayName, photoURL };
     creatUser(email, password)
       .then((result) => {
-        updeatProfile(updet).then(() => {
-          console.log("This is Creat User", result.user);
-        });
+        updeatProfile(updet).then(() => {});
       })
-      .catch((err) => {
-        console.log("User Error", err);
-      });
+      .catch((err) => {});
   };
 
   const handleGoogleSignIn = () => {
-    googleLogin()
-    .then(result => {
-      console.log(result.user);
-      
-    })
+    googleLogin().then((result) => {});
   };
   return (
     <div className="min-h-screen flex items-center justify-center">

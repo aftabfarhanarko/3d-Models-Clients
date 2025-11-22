@@ -26,7 +26,7 @@ const Download = () => {
   const deleteNow = (id) => {
     axiosApi.delete(`/downlods/${id}`).then((result) => {
       const data = result.data;
-      console.log(data);
+      // console.log(data);
       setTest(!test);
     });
   };

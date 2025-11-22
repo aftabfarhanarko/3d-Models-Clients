@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instence = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://3d-modal-server.vercel.app",
 });
 
 const useAxiosNormle = () => {

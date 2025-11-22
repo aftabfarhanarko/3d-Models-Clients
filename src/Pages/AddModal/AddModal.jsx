@@ -19,12 +19,12 @@ const AddModal = () => {
       created_by: user.email,
     };
 
-    axios.post("/model", formData).then((data) => {
-      console.log("This is From Data axios", data.data);
+    axios.post("/model", formData).then(() => {
+      // console.log("This is From Data axios", data.data);
     });
   };
 
-  console.log(user.email);
+  // console.log(user.email);
   
   return (
     <div className="min-h-screen flex items-center justify-center px-3">

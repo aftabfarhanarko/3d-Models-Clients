@@ -24,7 +24,6 @@ const AllModal = () => {
     const searchText = e.target.text.value;
 
     axio.get(`/data?search=${searchText}`).then((result) => {
-      console.log(result.data);
       setCards(result.data)
     });
   };

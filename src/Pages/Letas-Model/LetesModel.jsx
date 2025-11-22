@@ -16,7 +16,7 @@ const LetesModel = () => {
       setLoder(false);
     });
   }, [axio]);
-  console.log(modelsa);
+  // console.log(modelsa);
 
   if (loder) {
     return <Loder></Loder>;

@@ -9,24 +9,26 @@ import { TiHomeOutline } from "react-icons/ti";
 import { Link, NavLink } from "react-router";
 import useAuth from "../Hooks/UserAUth";
 import { FcDownload } from "react-icons/fc";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const { user, logoutUser } = useAuth();
-  // const link = (
-  //   <div className="flex gap-4 text-lg font-semibold">
-  //     <NavLink className="items-center gap-1 flex" to="/">
-  //       <TiHomeOutline /> Home
-  //     </NavLink>
-  //     <NavLink className="items-center gap-1 flex" to="/">
-  //       <IoLogoModelS /> All Models
-  //     </NavLink>
-  //     <NavLink className="items-center gap-1 flex" to="/">
-  //       <ImBoxAdd /> Add Models
-  //     </NavLink>
-  //   </div>
-  // );
 
-  const handleTheme = () => {};
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
+
+
+ 
+
+
   return (
     <div className=" flex justify-center">
       <div className="absolute   navbar  min-h-0 z-1 shadow-sm  glass-card  md:w-10/12 ">

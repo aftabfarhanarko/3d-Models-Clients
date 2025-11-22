@@ -16,7 +16,7 @@ const Detlics = () => {
 
   useEffect(() => {
     axo.get(`/model/${id}`).then((result) => {
-      console.log(result.data);
+      // console.log(result.data);
       setData(result.data);
     });
   }, [axo, id, refarncs]);
@@ -37,14 +37,14 @@ const Detlics = () => {
 
     axo.post(`/downlods/${data._id}`, finalModel).then((data) => {
       setRefarncs(!refarncs);
-      console.log("Data Downlodes and Updeat", data.data);
+      // console.log("Data Downlodes and Updeat", data.data);
     });
   };
 
   const handleDelete = () => {
     axo.delete(`/model/${id}`)
     .then(result => {
-      console.log(result.data);
+      // console.log(result.data);
       naviget("/")
     })
   };
@@ -68,7 +68,7 @@ const Detlics = () => {
     // console.log(formData);
 
     axo.patch(`/model/${data._id}`, formData).then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
     });
   };
   return (
